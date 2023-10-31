@@ -29,4 +29,7 @@ public class DepartmentServiceImpl implements DepartmentInterface {
         return employeeService.findAll();
     }
 
+    public Map<Integer, List<Employee>> findAllDepartmentAll() {
+        return null;
+    }
 }

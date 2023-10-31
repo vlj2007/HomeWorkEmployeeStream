@@ -16,6 +16,8 @@ public class EmployeeServiceImpl implements EmployeeInterface {
 
 
     public final int NUMBER_OF_EMPLOYEES = 10;
+    private Map<String, Employee> employeeMap;
+    private List<Employee> employeeInterface;
 
 //    public Map<integer, Employee> employeeMap = new HashMap<>(Map.of(
 //            1,
@@ -44,6 +46,10 @@ public class EmployeeServiceImpl implements EmployeeInterface {
 //    ));
 
 
+    public EmployeeServiceImpl(Map<String, Employee> employeeMap, List<Employee> employeeInterface) {
+        this.employeeMap = employeeMap;
+        this.employeeInterface = employeeInterface;
+    }
 
     public Map<String, Employee> getEmployeeMap(){
         return employeeMap;
@@ -91,5 +97,9 @@ public class EmployeeServiceImpl implements EmployeeInterface {
     public Map<Integer, List<Employee>> findAll() {
         return null;
     }
+
+
+
+
 }
 

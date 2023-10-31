@@ -12,6 +12,8 @@ public interface DepartmentInterface {
 
     Map<Integer, List<Employee>> getAll();
 
+    Map<Integer, List<Employee>> findAllDepartmentAll();
+
 
 
 }

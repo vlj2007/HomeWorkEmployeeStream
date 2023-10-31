@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pro.sky.HomeWorkEmployeeStream.Interface.DepartmentInterface;
 import pro.sky.HomeWorkEmployeeStream.Interface.EmployeeInterface;
 import pro.sky.HomeWorkEmployeeStream.Model.Employee;
+import pro.sky.HomeWorkEmployeeStream.ServiceImpl.DepartmentServiceImpl;
 
 import java.util.Collection;
 import java.util.List;
@@ -16,12 +17,11 @@ import java.util.Map;
 @RequestMapping("/departments")
 public class DepartmentController {
 
-    private DepartmentController service;
-
-    public DepartmentController(DepartmentInterface service) {
-        this.service = (DepartmentController) service;
+    private DepartmentServiceImpl service;
 
 
+    public DepartmentController(DepartmentServiceImpl service) {
+        this.service = service;
     }
 
     @GetMapping("/all")
