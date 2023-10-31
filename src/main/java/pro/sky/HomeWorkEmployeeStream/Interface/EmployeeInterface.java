@@ -3,16 +3,23 @@ package pro.sky.HomeWorkEmployeeStream.Interface;
 import pro.sky.HomeWorkEmployeeStream.Model.Employee;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 public interface EmployeeInterface {
 
-    Employee add(String firstName, String lastName);
 
-    Employee remove(String firstName, String lastName);
 
-    Employee find(String firstName, String lastName);
+    Employee add(String firstName, String lastName, int department, double salary);
 
-    Collection<Employee> findAll();
+    Employee remove(String firstName, String lastName, int department, double salary);
+
+    Employee find(String firstName, String lastName, int department, double salary);
+
+    Map<Integer, List<Employee>> findAll();
+
+    List<Employee> getEmployeesList();
+
 
 
 }

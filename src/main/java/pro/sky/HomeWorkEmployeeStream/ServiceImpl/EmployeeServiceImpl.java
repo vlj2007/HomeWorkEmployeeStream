@@ -1,66 +1,95 @@
 package pro.sky.HomeWorkEmployeeStream.ServiceImpl;
 
 import org.springframework.stereotype.Service;
-import pro.sky.HomeWorkEmployeeStream.Exception.EmployeeAlreadyAddedException;
 import pro.sky.HomeWorkEmployeeStream.Exception.EmployeeNotFoundException;
 import pro.sky.HomeWorkEmployeeStream.Exception.EmployeeStorageIsFullException;
+import pro.sky.HomeWorkEmployeeStream.Exception.EmployeeAlreadyAddedException;
 import pro.sky.HomeWorkEmployeeStream.Interface.EmployeeInterface;
 import pro.sky.HomeWorkEmployeeStream.Model.Employee;
+import pro.sky.HomeWorkEmployeeStream.bootstrap.Runner;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Service
+public class EmployeeServiceImpl implements EmployeeInterface {
 
-public class EmployeeServiceImpl implements EmployeeInterface{
+
 
     public final int NUMBER_OF_EMPLOYEES = 10;
 
-    private final List<Employee> employeesList;
+//    public Map<integer, Employee> employeeMap = new HashMap<>(Map.of(
+//            1,
+//            new Employee(
+//
+//                    "vladimir",
+//                    "Volkov",
+//                    1,
+//                    30_000),
+//
+//            2,
+//            new Employee(
+//                    "Igor",
+//                    "Verbludev",
+//                    2,
+//                    50_000),
+//
+//            2,
+//            new Employee(
+//                    "luba",
+//                    "Ivanova",
+//                    2,
+//                    25_000)
+//
+//
+//    ));
 
-    public EmployeeServiceImpl() {
-        this.employeesList = new ArrayList<>();
+
+
+    public Map<String, Employee> getEmployeeMap(){
+        return employeeMap;
+    }
+
+
+    public List<Employee> getEmployeesList() {
+        return employeeInterface;
     }
 
     @Override
-    public Employee add(String firstName, String lastName) {
-        Employee employee = new Employee(firstName, lastName);
+    public Employee add(String firstName, String lastName, int department, double salary) {
+        Employee employee = new Employee(firstName, lastName, department, salary);
+        String name = firstName + lastName;
 
-        if (employeesList.size() > NUMBER_OF_EMPLOYEES) {
+        if (getEmployeeMap().size() > NUMBER_OF_EMPLOYEES) {
             throw new EmployeeStorageIsFullException("Превышен лимит количества сотрудников");
         }
 
-        if (employeesList.contains(employee)) {
+        if (getEmployeeMap().containsKey(name)) {
             throw new EmployeeAlreadyAddedException("уже есть такой сотрудник");
         }
-        employeesList.add(employee);
+
+        getEmployeeMap().put(name, employee);
         return employee;
+
     }
 
     @Override
-    public Employee remove(String firstName, String lastName) {
-        Employee employee = new Employee(firstName, lastName);
-        if (employeesList.contains(employee)) {
-            employeesList.remove(employee);
-            return employee;
+    public Employee remove(String firstName, String lastName, int department, double salary) {
+        Employee employee = new Employee(firstName, lastName, department, salary);
+        String name = firstName + lastName;
+        if (getEmployeeMap().containsKey(name)) {
+            return getEmployeeMap().remove(employee);
         }
         throw new EmployeeNotFoundException();
     }
 
     @Override
-    public Employee find(String firstName, String lastName) {
-        Employee employee = new Employee(firstName, lastName);
-        if (employeesList.contains(employee)) {
-            return employee;
-        }
-        throw new EmployeeNotFoundException();
+    public Employee find(String firstName, String lastName, int department, double salary) {
+        return Optional.ofNullable(getEmployeeMap().get(firstName + lastName)).orElseThrow(EmployeeNotFoundException::new);
     }
 
     @Override
-    public Collection<Employee> findAll() {
-        return Collections.unmodifiableList(employeesList);
+    public Map<Integer, List<Employee>> findAll() {
+        return null;
     }
-
 }
+
