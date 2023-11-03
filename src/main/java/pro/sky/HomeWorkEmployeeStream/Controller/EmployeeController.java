@@ -47,7 +47,7 @@ public class EmployeeController {
 
     @GetMapping
     public List<Employee> findAll() {
-        return Collections.unmodifiableList((List<Employee>) service.findAll());
+        return Collections.unmodifiableList((List<Employee>) service.getEmployeesList());
     }
 
 }

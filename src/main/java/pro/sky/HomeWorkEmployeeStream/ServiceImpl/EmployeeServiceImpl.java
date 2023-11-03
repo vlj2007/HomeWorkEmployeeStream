@@ -13,38 +13,19 @@ import java.util.*;
 @Service
 public class EmployeeServiceImpl implements EmployeeInterface {
 
-
-
     public final int NUMBER_OF_EMPLOYEES = 10;
-    private Map<String, Employee> employeeMap;
-    private List<Employee> employeeInterface;
+    private final Map<String, Employee> employeeMap;
+    private final List<Employee> employeeInterface;
 
-//    public Map<integer, Employee> employeeMap = new HashMap<>(Map.of(
-//            1,
-//            new Employee(
-//
-//                    "vladimir",
-//                    "Volkov",
-//                    1,
-//                    30_000),
-//
-//            2,
-//            new Employee(
-//                    "Igor",
-//                    "Verbludev",
-//                    2,
-//                    50_000),
-//
-//            2,
-//            new Employee(
-//                    "luba",
-//                    "Ivanova",
-//                    2,
-//                    25_000)
-//
-//
-//    ));
 
+    @Override
+    public List<Employee> myList(Map<String, Employee> employeeMap) {
+        final List<Employee> employee = new ArrayList<>();
+        for (Employee employees : employeeMap.values()) {
+            employee.add(employees);
+        }
+        return employee;
+    }
 
     public EmployeeServiceImpl(Map<String, Employee> employeeMap, List<Employee> employeeInterface) {
         this.employeeMap = employeeMap;
@@ -54,7 +35,6 @@ public class EmployeeServiceImpl implements EmployeeInterface {
     public Map<String, Employee> getEmployeeMap(){
         return employeeMap;
     }
-
 
     public List<Employee> getEmployeesList() {
         return employeeInterface;
@@ -92,14 +72,6 @@ public class EmployeeServiceImpl implements EmployeeInterface {
     public Employee find(String firstName, String lastName, int department, double salary) {
         return Optional.ofNullable(getEmployeeMap().get(firstName + lastName)).orElseThrow(EmployeeNotFoundException::new);
     }
-
-    @Override
-    public Map<Integer, List<Employee>> findAll() {
-        return null;
-    }
-
-
-
 
 }
 

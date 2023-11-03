@@ -12,12 +12,13 @@ import pro.sky.HomeWorkEmployeeStream.ServiceImpl.DepartmentServiceImpl;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/departments")
 public class DepartmentController {
 
-    private DepartmentServiceImpl service;
+    private final DepartmentServiceImpl service;
 
 
     public DepartmentController(DepartmentServiceImpl service) {
@@ -29,9 +30,20 @@ public class DepartmentController {
         return service.findAllDepartmentAll();
     }
 
+    @GetMapping("/max-salary")
+    public Employee findMaxSalaryInDepartment(@RequestParam int departmentId){
+        return service.findEmployeeMaxSalaryInDepartment(departmentId);
+    }
 
+    @GetMapping("/min-salary")
+    public Employee findEmployeeMinSalaryInDepartment(@RequestParam int departmentId) {
+        return service.findEmployeeMinSalaryInDepartment(departmentId);
+    }
 
-
+    @GetMapping(value = "/all", params = "departmentId")
+    public List<Employee> getAllByDepartment(@RequestParam("departmentId") int departmentId) {
+        return service.getAllByDepartment(departmentId);
+    }
 
 }
 
