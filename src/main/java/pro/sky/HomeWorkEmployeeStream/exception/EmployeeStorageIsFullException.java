@@ -1,4 +1,4 @@
-package pro.sky.HomeWorkEmployeeStream.Exception;
+package pro.sky.HomeWorkEmployeeStream.exception;
 
 public class EmployeeStorageIsFullException extends RuntimeException {
 
