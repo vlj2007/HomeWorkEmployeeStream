@@ -1,7 +1,7 @@
 package pro.sky.HomeWorkEmployeeStream.serviceImpl;
 
 import org.springframework.stereotype.Service;
-import pro.sky.HomeWorkEmployeeStream.Interface.DepartmentInterface;
+import pro.sky.HomeWorkEmployeeStream.api.DepartmentInterface;
 import pro.sky.HomeWorkEmployeeStream.model.Employee;
 import pro.sky.HomeWorkEmployeeStream.exception.EmployeeNotFoundException;
 

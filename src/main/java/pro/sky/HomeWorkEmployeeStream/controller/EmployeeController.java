@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import pro.sky.HomeWorkEmployeeStream.Interface.EmployeeInterface;
+import pro.sky.HomeWorkEmployeeStream.api.EmployeeInterface;
 import pro.sky.HomeWorkEmployeeStream.model.Employee;
 
 import java.util.Collections;

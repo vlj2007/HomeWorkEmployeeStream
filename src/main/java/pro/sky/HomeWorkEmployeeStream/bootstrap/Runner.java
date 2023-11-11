@@ -3,8 +3,7 @@ package pro.sky.HomeWorkEmployeeStream.bootstrap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import pro.sky.HomeWorkEmployeeStream.Interface.EmployeeInterface;
-import pro.sky.HomeWorkEmployeeStream.serviceImpl.EmployeeServiceImpl;
+import pro.sky.HomeWorkEmployeeStream.api.EmployeeInterface;
 
 @Component
 public class Runner implements CommandLineRunner {

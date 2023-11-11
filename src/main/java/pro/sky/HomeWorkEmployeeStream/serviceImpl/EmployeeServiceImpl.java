@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import pro.sky.HomeWorkEmployeeStream.exception.EmployeeAlreadyAddedException;
 import pro.sky.HomeWorkEmployeeStream.exception.EmployeeNotFoundException;
 import pro.sky.HomeWorkEmployeeStream.exception.EmployeeStorageIsFullException;
-import pro.sky.HomeWorkEmployeeStream.Interface.EmployeeInterface;
+import pro.sky.HomeWorkEmployeeStream.api.EmployeeInterface;
 import pro.sky.HomeWorkEmployeeStream.model.Employee;
 
 import java.util.*;
@@ -15,50 +15,7 @@ public class EmployeeServiceImpl implements EmployeeInterface{
     public final int NUMBER_OF_EMPLOYEES = 15;
 //    private Map<String, Employee> employeeMap;
 
-    private Map<String, Employee> employeeMap = new HashMap<>(Map.of(
-            "ИванИванов",
-            new Employee(
-
-                    "Иван",
-                    "Иванов",
-                    1,
-                    3),
-
-
-            "ПетрПетров",
-            new Employee(
-                    "Петр",
-                    "Петров",
-                    1,
-                    5),
-
-            "СидорСидоров",
-            new Employee(
-                    "Сидр",
-                    "Сидоров",
-                    3,
-                    2),
-            "ТимофейТимофеев",
-            new Employee(
-                    "Тимофей",
-                    "Тимофеев",
-                    2,
-                    1),
-            "СергейСергеев",
-            new Employee(
-                    "Сергей",
-                    "Сергеев",
-                    4,
-                    1)
-
-
-    ));
-
-    private final List<Employee> employeesList;
-
-    public EmployeeServiceImpl() {
-        this.employeesList = new ArrayList<>();
-    }
+    private Map<String, Employee> employeeMap = new HashMap<>();
 
     @Override
     public List<Employee> myList(Map<String, Employee> employeeMap) {

@@ -1,4 +1,4 @@
-package pro.sky.HomeWorkEmployeeStream.Interface;
+package pro.sky.HomeWorkEmployeeStream.api;
 
 import pro.sky.HomeWorkEmployeeStream.model.Employee;
 
